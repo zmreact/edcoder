@@ -1,14 +1,10 @@
 #include <QCoreApplication>
-#include <QDebug>
-#include <QString>
 #include <QCommandLineParser>
-#include <QCommandLineOption>
-#include <QStringList>
-#include <stdio.h>
 #include <QTextStream>
-#include <QImage>
-#include <QImageReader>
 
+#include <stdio.h>
+#include <setup_parser.h>
+#include <welcome_msg.h>
 #include <encoder.h>
 #include <decoder.h>
 #include <imagereader.h>
@@ -25,45 +21,12 @@ int main(int argc, char *argv[])
 
     /* parser declaration */
     QCommandLineParser parser;
-    QCommandLineOption encode(QStringList() << "e" << "encode",
-            "Encode <image file to encode>",
-            "path");
-    QCommandLineOption decode(QStringList() << "d" << "decode",
-            "Decode <image file to decode>",
-            "path");
-    QCommandLineOption help(QStringList() << "h" << "help",
-            "Shows this help");
-    parser.addOption(encode);
-    parser.addOption(decode);
-    parser.addOption(help);
-
-    QStringList helptextQSL;
-    helptextQSL << parser.helpText().split("\n");
-    helptextQSL.removeFirst();
-    helptextQSL.removeFirst();
-    helptextQSL.removeLast();
-    QString helptext = (QString) helptextQSL.join("\n");
-
+    setup_parser(parser);
     parser.process(ed);
 
 
     /* welcome message */
-    QStringList WelcomeMessageQSL;
-    WelcomeMessageQSL << "Moscow Technical University of Communication and Informatics" << "\n" << "Department of multimedia networks and communication services" << "\n" << "Course work on MSKvSPD" << "\n" << "Student group: BSU1401" << "\n"
-                      << "Developers:" << " " << "Denis Petuhov" << "," << "\n"
-                      << "            " << "Korotygin Aleksandr" << "," << "\n"
-                      << "            " << "Kaledina Anastasija" << "," << "\n"
-                      << "            " << "Gubankova Ekaterina" << "." << "\n"
-                      << "\n"
-                      << ed.applicationName() << "." << " " << "Version" << " " << ed.applicationVersion() << "\n"
-                      << "\n"
-                      << "Usage:" << " " << argv[0] << " " << "[-e image file to encode] [-d image file to encode]" << "\n"
-                      << "Supported file image formats:" << " " << QImageReader::supportedImageFormats().join(", ") << "\n"
-                      << "\n"
-                      << helptext << "\n"
-                      << "\n";
-    QString WelcomeMessage = (QString) WelcomeMessageQSL.join("");
-    out << WelcomeMessage;
+    welcome_msg(parser,out);
 
 
     /* options switch */
