@@ -9,6 +9,7 @@
 #include <QImage>
 #include <QImageReader>
 
+#include <setup_parser.h>
 #include <encoder.h>
 #include <decoder.h>
 #include <imagereader.h>
@@ -25,17 +26,8 @@ int main(int argc, char *argv[])
 
     /* parser declaration */
     QCommandLineParser parser;
-    QCommandLineOption encode(QStringList() << "e" << "encode",
-            "Encode <image file to encode>",
-            "path");
-    QCommandLineOption decode(QStringList() << "d" << "decode",
-            "Decode <image file to decode>",
-            "path");
-    QCommandLineOption help(QStringList() << "h" << "help",
-            "Shows this help");
-    parser.addOption(encode);
-    parser.addOption(decode);
-    parser.addOption(help);
+    setup_parser(parser);
+    parser.process(ed);
 
     QStringList helptextQSL;
     helptextQSL << parser.helpText().split("\n");
