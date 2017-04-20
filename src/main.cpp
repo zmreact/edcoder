@@ -1,12 +1,8 @@
 #include <QCoreApplication>
-#include <QDebug>
-#include <QString>
 #include <QCommandLineParser>
-#include <QCommandLineOption>
-#include <QStringList>
-#include <stdio.h>
 #include <QTextStream>
 
+#include <stdio.h>
 #include <setup_parser.h>
 #include <welcome_msg.h>
 #include <encoder.h>
@@ -31,7 +27,6 @@ int main(int argc, char *argv[])
 
     /* welcome message */
     welcome_msg(parser,out);
-
 
 
     /* options switch */
