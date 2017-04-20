@@ -6,10 +6,9 @@
 #include <QStringList>
 #include <stdio.h>
 #include <QTextStream>
-#include <QImage>
-#include <QImageReader>
 
 #include <setup_parser.h>
+#include <welcome_msg.h>
 #include <encoder.h>
 #include <decoder.h>
 #include <imagereader.h>
@@ -29,33 +28,10 @@ int main(int argc, char *argv[])
     setup_parser(parser);
     parser.process(ed);
 
-    QStringList helptextQSL;
-    helptextQSL << parser.helpText().split("\n");
-    helptextQSL.removeFirst();
-    helptextQSL.removeFirst();
-    helptextQSL.removeLast();
-    QString helptext = (QString) helptextQSL.join("\n");
-
-    parser.process(ed);
-
 
     /* welcome message */
-    QStringList WelcomeMessageQSL;
-    WelcomeMessageQSL << "Moscow Technical University of Communication and Informatics" << "\n" << "Department of multimedia networks and communication services" << "\n" << "Course work on MSKvSPD" << "\n" << "Student group: BSU1401" << "\n"
-                      << "Developers:" << " " << "Denis Petuhov" << "," << "\n"
-                      << "            " << "Korotygin Aleksandr" << "," << "\n"
-                      << "            " << "Kaledina Anastasija" << "," << "\n"
-                      << "            " << "Gubankova Ekaterina" << "." << "\n"
-                      << "\n"
-                      << ed.applicationName() << "." << " " << "Version" << " " << ed.applicationVersion() << "\n"
-                      << "\n"
-                      << "Usage:" << " " << argv[0] << " " << "[-e image file to encode] [-d image file to encode]" << "\n"
-                      << "Supported file image formats:" << " " << QImageReader::supportedImageFormats().join(", ") << "\n"
-                      << "\n"
-                      << helptext << "\n"
-                      << "\n";
-    QString WelcomeMessage = (QString) WelcomeMessageQSL.join("");
-    out << WelcomeMessage;
+    welcome_msg(parser,out);
+
 
 
     /* options switch */
