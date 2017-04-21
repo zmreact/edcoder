@@ -38,7 +38,6 @@ int main(int argc, char *argv[])
             QString path = parser.value("e");
             out << "Encoding started..." << endl << endl;
             out << "Path to file is:" << " " << path << endl << endl;
-            out << "Image data" << endl;
             read_image(out, path);
             out << endl;
             encoder(out, path);

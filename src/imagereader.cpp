@@ -8,6 +8,7 @@ bool read_image(QTextStream &out, QString path)
     QImage img(path);
     if (img.isNull()!=true)
     {
+        out << "Image data" << endl;
         out << "Width: " << img.width() << endl;
         out << "Height: " << img.height() << endl;
         out << "Depth: " << img.bitPlaneCount() << endl;
