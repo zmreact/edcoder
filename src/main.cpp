@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     ed.setApplicationVersion("1.0");
 
 
-    /* parser declaration */
+    /* parser*/
     QCommandLineParser parser;
     setup_parser(parser);
     parser.process(ed);
@@ -46,10 +46,11 @@ int main(int argc, char *argv[])
         } else if (parser.optionNames()[0] == QString("d")) {
             QString path = parser.value("d");
             out << "Decoding started..." << endl;
+            out << "Path to file is:" << " " << path << endl << endl;
             decoder(out, path);
             out << endl;
         } else if (parser.optionNames()[0] == QString("h")) {
-            /* just nothing happens*/
+            /* just nothing happens, as help text is in welcome message*/
         } else break;
     }
 
