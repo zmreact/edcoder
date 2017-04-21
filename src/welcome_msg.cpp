@@ -1,6 +1,4 @@
-#include <QCommandLineParser>
-#include <QTextStream>
-#include <QImageReader>
+#include "welcome_msg.h"
 
 void welcome_msg(QCommandLineParser &parser, QTextStream &out)
 {

@@ -1,4 +1,4 @@
-#include <QTextStream>
+#include "decoder.h"
 
 void decoder(QTextStream &out, QString path)
 {

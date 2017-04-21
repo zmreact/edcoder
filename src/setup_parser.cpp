@@ -1,5 +1,4 @@
-#include <QCommandLineOption>
-#include <QCommandLineParser>
+#include "setup_parser.h"
 
 void setup_parser(QCommandLineParser &parser)
 {
