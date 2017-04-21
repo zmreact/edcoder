@@ -4,7 +4,7 @@
 
 #include <QCommandLineParser>
 
-void setup_parser(QCommandLineParser &parser);
+void setup_parser(QCommandLineParser &);
 
 
 #endif // SETUP_PARSER_H

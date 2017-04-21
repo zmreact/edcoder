@@ -2,7 +2,7 @@
 #include <QTextStream>
 #include <QImageReader>
 
-void welcome_msg(QCommandLineParser &parser, QTextStream& out)
+void welcome_msg(QCommandLineParser &parser, QTextStream &out)
 {
     QStringList helptextQSL;
     helptextQSL << parser.helpText().split("\n");

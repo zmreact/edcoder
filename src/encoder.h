@@ -1,7 +1,10 @@
 #ifndef ENCODER_H
 #define ENCODER_H
-#endif // ENCODER_H
+
 
 #include <QTextStream>
 
-void encoder(QTextStream&, QString);
+void encoder(QTextStream &, QString);
+
+
+#endif // ENCODER_H

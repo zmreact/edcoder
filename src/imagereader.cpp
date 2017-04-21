@@ -3,7 +3,7 @@
 #include <QImageReader>
 #include <QColor>
 
-bool readimage(QTextStream& out, QString path)
+bool readimage(QTextStream &out, QString path)
 {
     QImage img(path);
     if (img.isNull()!=true)
