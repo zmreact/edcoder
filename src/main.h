@@ -9,7 +9,7 @@
 #include "stdio.h"
 #include "setup_parser.h"
 #include "welcome_msg.h"
-#include "encoder.h"
+#include "edEncoder.h"
 #include "decoder.h"
 #include "edImageReader.h"
 

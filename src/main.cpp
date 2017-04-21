@@ -33,7 +33,14 @@ int main(int argc, char *argv[])
             imgreader.image_info(out);
             imgreader.pixel_data(out);
             out << endl;
-            encoder(out, path);
+            /* just for test */
+            QString str = "the/rain/in/Spain/falls/mainly/on/the/plain/";
+            edEncoder encoder(str[0]);
+            for (int i = 1; i < str.length(); i++) {
+                encoder.LZW(str[i]);
+            }
+            out << encoder.TABLE.keys().join("\n");
+            /* ------------- */
             out << endl;
         } else if (parser.optionNames()[0] == QString("d")) {
             QString path = parser.value("d");

@@ -9,11 +9,11 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    encoder.cpp \
     decoder.cpp \
     setup_parser.cpp \
     welcome_msg.cpp \
-    edImageReader.cpp
+    edImageReader.cpp \
+    edEncoder.cpp
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -28,8 +28,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 HEADERS += \
     decoder.h \
-    encoder.h \
     main.h \
     setup_parser.h \
     welcome_msg.h \
-    edImageReader.h
+    edImageReader.h \
+    edEncoder.h
