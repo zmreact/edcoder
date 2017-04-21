@@ -7,7 +7,7 @@
 #include <welcome_msg.h>
 #include <encoder.h>
 #include <decoder.h>
-#include <imagereader.h>
+#include <edImageReader.h>
 
 using namespace std;
 
@@ -38,7 +38,9 @@ int main(int argc, char *argv[])
             QString path = parser.value("e");
             out << "Encoding started..." << endl << endl;
             out << "Path to file is:" << " " << path << endl << endl;
-            read_image(out, path);
+            edImageReader imgreader(path);
+            imgreader.image_info(out);
+            imgreader.pixel_data(out);
             out << endl;
             encoder(out, path);
             out << endl;
