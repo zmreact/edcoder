@@ -4,7 +4,7 @@
 
 #include <QTextStream>
 
-bool readimage(QTextStream &, QString);
+bool read_image(QTextStream &, QString);
 
 
 #endif // IMAGEREADER_H
