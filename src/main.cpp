@@ -6,7 +6,7 @@ int main(int argc, char *argv[])
 {
     QTextStream out(stdout);
     QCoreApplication ed(argc, argv);
-    ed.setApplicationName("Image Encoder/Decoder");
+    ed.setApplicationName("Edcoder. Image Encoder/Decoder");
     ed.setApplicationVersion("1.0");
 
 
@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
 
     /* welcome message */
-    welcome_msg(parser,out);
+    welcome_msg(parser, out);
 
 
     /* options switch */
