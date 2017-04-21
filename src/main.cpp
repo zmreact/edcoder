@@ -51,8 +51,6 @@ int main(int argc, char *argv[])
         } else if (parser.optionNames()[0] == QString("h")) {
             /* just nothing happens*/
         } else break;
-    default:
-        break;
     }
 
 
