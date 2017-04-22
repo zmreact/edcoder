@@ -32,14 +32,15 @@ int main(int argc, char *argv[])
             edImageReader imgreader(path);
             imgreader.image_info(out);
             imgreader.pixel_data(out);
-            out << endl;
+            if (imgreader.read_image_ok) {out << endl;} else {out << "Error reading image. Wrong file!" << endl << endl;}
             /* just for test */
             QString str = "the/rain/in/Spain/falls/mainly/on/the/plain/";
-            edEncoder encoder(str[0]);
-            for (int i = 1; i < str.length(); i++) {
-                encoder.LZW(str[i]);
+            path = str;
+            edEncoder encoder(path[0]);
+            for (int i = 1; i < path.length(); i++) {
+                encoder.LZW(path[i]);
+                encoder.outCODE(out);
             }
-            out << encoder.TABLE.keys().join("\n");
             /* ------------- */
             out << endl;
         } else if (parser.optionNames()[0] == QString("d")) {

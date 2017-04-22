@@ -5,6 +5,8 @@
 #include <QCoreApplication>
 #include <QCommandLineParser>
 #include <QTextStream>
+#include <iostream>
+#include <iomanip>
 
 #include "stdio.h"
 #include "setup_parser.h"
