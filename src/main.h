@@ -5,6 +5,7 @@
 #include <QCoreApplication>
 #include <QCommandLineParser>
 #include <QTextStream>
+#include <QFile>
 #include <iostream>
 #include <iomanip>
 

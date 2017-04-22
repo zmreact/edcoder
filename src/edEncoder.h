@@ -3,6 +3,8 @@
 
 
 #include <QTextStream>
+#include <QFile>
+#include <bitset>
 #include "edImageReader.h"
 
 class edEncoder
@@ -14,8 +16,9 @@ public:
     edEncoder(QChar);
     void LZW(QChar);
     void outCODE(QTextStream &);
+    void outCODE(QFile &file);
     QHash<QString, int> TABLE;
-    int CODE;
+    QByteArray CODE;
 };
 
 
