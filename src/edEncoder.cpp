@@ -1,6 +1,6 @@
 #include "edEncoder.h"
 
-edEncoder::edEncoder(QChar FIRSTCHAR)
+edEncoder::edEncoder(unsigned char FIRSTCHAR)
 {
     STRING = FIRSTCHAR;
     for (int i = 0; i < 256; i++) {
@@ -8,7 +8,7 @@ edEncoder::edEncoder(QChar FIRSTCHAR)
     }
 }
 
-void edEncoder::LZW(QChar CHAR)
+void edEncoder::LZW(unsigned char CHAR)
 {
     QHash<QString, int>::const_iterator TABLEiterator = TABLE.find(STRING + CHAR);
     if (TABLEiterator == TABLE.end()) {

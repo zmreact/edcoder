@@ -13,8 +13,8 @@ private:
     QString STRING;
     bool NEWCODE;
 public:
-    edEncoder(QChar);
-    void LZW(QChar);
+    edEncoder(unsigned char);
+    void LZW(unsigned char);
     void outCODE(QTextStream &);
     void outCODE(QFile &file);
     QHash<QString, int> TABLE;

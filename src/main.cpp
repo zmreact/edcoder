@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
             if (imgreader.read_image_ok) {out << endl;} else {out << "Error reading image. Wrong file!" << endl << endl;}
 
             /* just for test */
-            QString str = "the/rain/in/Spain/falls/mainly/on/the/plain/";
+            string str = "the/rain/in/Spain/falls/mainly/on/the/plain/";
             QFile file(path.append(".lzw"));
             if (file.exists()) file.remove();
 
