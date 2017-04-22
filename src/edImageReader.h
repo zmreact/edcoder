@@ -9,7 +9,6 @@ class edImageReader
 {
 private:
     QRgb pixelData;
-    int red, green, blue;
 public:
     QImage img;
     void pixel_data(QTextStream &);
@@ -17,6 +16,7 @@ public:
     void read_pixel(int, int);
     edImageReader(QString);
     bool read_image_ok = false;
+    unsigned char red, green, blue;
 };
 
 
