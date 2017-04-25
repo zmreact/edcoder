@@ -1,6 +1,6 @@
 #include "edEncoder.h"
 
-edEncoder::edEncoder(unsigned char FIRSTCHAR)
+edEncoder::edEncoder(QChar FIRSTCHAR)
 {
     STRING = FIRSTCHAR;
     for (int i = 0; i < 256; i++) {
@@ -8,7 +8,7 @@ edEncoder::edEncoder(unsigned char FIRSTCHAR)
     }
 }
 
-void edEncoder::LZW(unsigned char CHAR)
+void edEncoder::LZW(QChar CHAR)
 {
     QHash<QString, int>::const_iterator TABLEiterator = TABLE.find(STRING + CHAR);
     if (TABLEiterator == TABLE.end()) {
@@ -25,7 +25,7 @@ void edEncoder::LZW(unsigned char CHAR)
 
 void edEncoder::outCODE(QTextStream &out)
 {
-    if (NEWCODE) out << CODE << "\n";
+    if (NEWCODE) out << CODE << endl;
 }
 
 void edEncoder::outCODE(QFile &file)

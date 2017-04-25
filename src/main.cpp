@@ -29,20 +29,22 @@ int main(int argc, char *argv[])
             QString path = parser.value("e");
             out << "Encoding started..." << endl << endl;
             out << "Path to file is:" << " " << path << endl << endl;
+
             edImageReader imgreader(path);
-            imgreader.image_info(out);
-            imgreader.pixel_data(out);
-            if (imgreader.read_image_ok) {out << endl;} else {out << "Error reading image. Wrong file!" << endl << endl;}
+            if (imgreader.read_image_ok) {imgreader.image_info(out);
+                                          imgreader.pixel_data(out);
+                                          out << endl;}
+            else {out << "Error reading image. Wrong file!" << endl;
+                  out << endl;}
 
             /* just for test */
-            string str = "the/rain/in/Spain/falls/mainly/on/the/plain/";
+            QString str = "the/rain/in/Spain/falls/mainly/on/the/plain/";
             QFile file(path.append(".lzw"));
             if (file.exists()) file.remove();
 
             edEncoder encoder(str[0]);
             for (int i = 1; i < str.length(); i++) {
                 encoder.LZW(str[i]);
-                encoder.outCODE(out);
                 encoder.outCODE(file);
             }
             /* ------------- */
@@ -55,7 +57,7 @@ int main(int argc, char *argv[])
             decoder(out, path);
             out << endl;
         } else if (parser.optionNames()[0] == QString("h")) {
-            /* just nothing happens, as help text is in welcome message*/
+            /* just nothing happens, as help text is in welcome message */
         } else break;
     }
 

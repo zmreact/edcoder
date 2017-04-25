@@ -7,20 +7,21 @@
 #include <bitset>
 #include "edImageReader.h"
 
+using namespace std;
+
 class edEncoder
 {
 private:
     QString STRING;
     bool NEWCODE;
 public:
-    edEncoder(unsigned char);
-    void LZW(unsigned char);
+    edEncoder(QChar);
+    void LZW(QChar);
     void outCODE(QTextStream &);
     void outCODE(QFile &file);
     QHash<QString, int> TABLE;
     QByteArray CODE;
 };
-
 
 
 #endif // ENCODER_H

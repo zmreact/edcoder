@@ -36,7 +36,7 @@ void edImageReader::pixel_data(QTextStream &out)
         for (int i = 0; i < img.height(); i++) {
             for (int j = 0; j < img.width(); j++) {
                 read_pixel(i, j);
-                out << i*img.width()+j+1 << " " << "pixel data: " << "R" << red << "G" << green << "B" << blue << endl;
+                out << i*img.width()+j+1 << " " << "pixel data: " << "R" << red.unicode() << "G" << green.unicode() << "B" << blue.unicode() << endl;
             }
         }
     }
