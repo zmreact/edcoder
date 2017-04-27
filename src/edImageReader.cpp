@@ -43,7 +43,7 @@ void edImageReader::image_info(QTextStream &out)
         out << "Width: " << img.width() << endl;
         out << "Height: " << img.height() << endl;
         out << "Depth: " << img.bitPlaneCount() << endl;
-        out << "Bytes per line: " << img.bytesPerLine() << endl;
+        out << "Bytes per line: " << img.bytesPerLine() * 3/4 << endl;
     }
 }
 

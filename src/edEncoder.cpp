@@ -15,8 +15,8 @@ void edEncoder::LZW(const QChar &CHAR)
         TABLE.insert(STRING + CHAR, TABLE.size());
         QDataStream STREAM(&CODE,QIODevice::WriteOnly);
         STREAM << TABLE.find(STRING).value();
-        compressedSize += CODE.size();
         STRING = CHAR;
+        compressedSize += CODE.size();
     } else {
         NEWCODE = false;
         STRING += CHAR;
@@ -30,18 +30,16 @@ void edEncoder::outCODE(QTextStream &out)
 
 void edEncoder::outCODE(QFile &file)
 {
-    if (NEWCODE) {
-        file.write(CODE);
-    }
+    if (NEWCODE) file.write(CODE);
 }
 
-void edEncoder::outLASTCODE(QFile &file)
-{
-    QDataStream STREAM(&CODE,QIODevice::WriteOnly);
-    STREAM << TABLE.find(STRING).value();
-    compressedSize += CODE.size();
-    outCODE(file);
-}
+
+
+
+
+
+
+
 
 edImageEncoder::edImageEncoder()
 {
@@ -50,6 +48,7 @@ edImageEncoder::edImageEncoder()
 void edImageEncoder::encode(edImageReader &imgreader, QFile &OUTPUT)
 {
     OUTPUT.open(QIODevice::ReadWrite | QIODevice::Append);
+
     imgreader.read_pixel(0,0);
     STRING = imgreader.red;
     for (int i = 1; i < imgreader.img.height()*imgreader.img.width(); i++) {
@@ -57,7 +56,10 @@ void edImageEncoder::encode(edImageReader &imgreader, QFile &OUTPUT)
         LZW(imgreader.red);
         outCODE(OUTPUT);
     }
-    outLASTCODE(OUTPUT);
+    QDataStream STREAM1(&CODE,QIODevice::WriteOnly);
+    STREAM1 << TABLE.find(STRING).value();
+    compressedSize += CODE.size();
+
     imgreader.read_pixel(0,0);
     STRING = imgreader.green;
     for (int i = 1; i < imgreader.img.height()*imgreader.img.width(); i++) {
@@ -65,7 +67,10 @@ void edImageEncoder::encode(edImageReader &imgreader, QFile &OUTPUT)
         LZW(imgreader.green);
         outCODE(OUTPUT);
     }
-    outLASTCODE(OUTPUT);
+    QDataStream STREAM2(&CODE,QIODevice::WriteOnly);
+    STREAM2 << TABLE.find(STRING).value();
+    compressedSize += CODE.size();
+
     imgreader.read_pixel(0,0);
     STRING = imgreader.blue;
     for (int i = 1; i < imgreader.img.height()*imgreader.img.width(); i++) {
@@ -73,10 +78,22 @@ void edImageEncoder::encode(edImageReader &imgreader, QFile &OUTPUT)
         LZW(imgreader.blue);
         outCODE(OUTPUT);
     }
-    outLASTCODE(OUTPUT);
+    QDataStream STREAM3(&CODE,QIODevice::WriteOnly);
+    STREAM3 << TABLE.find(STRING).value();
+    compressedSize += CODE.size();
+
     OUTPUT.close();
     compressionRate = (float) compressedSize / ((float) imgreader.img.byteCount() * 3/4);
 }
+
+
+
+
+
+
+
+
+
 
 
 edTextEncoder::edTextEncoder()
@@ -91,5 +108,8 @@ void edTextEncoder::encode(const QString &INPUT, QFile &OUTPUT)
         LZW(INPUT[i]);
         outCODE(OUTPUT);
     }
-    outLASTCODE(OUTPUT);
+    QDataStream STREAM(&CODE,QIODevice::WriteOnly);
+    STREAM << TABLE.find(STRING).value();
+    compressedSize += CODE.size();
+    outCODE(OUTPUT);
 }
