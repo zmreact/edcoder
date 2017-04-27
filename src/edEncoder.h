@@ -8,6 +8,8 @@
 
 class edEncoder
 {
+private:
+
 protected:
     QString STRING;
     bool NEWCODE;
@@ -15,10 +17,12 @@ protected:
     void outCODE(QTextStream &);
     void outCODE(QFile &);
     void outLASTCODE(QFile &);
-    QHash<QString, int> TABLE;
+    QHash<QString, unsigned short> TABLE;
     QByteArray CODE;
+    int compressedSize;
 public:
     edEncoder();
+    float compressionRate;
 };
 
 
