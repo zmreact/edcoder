@@ -39,17 +39,14 @@ int main(int argc, char *argv[])
 
             /* just for test */
             QString str = "the/rain/in/Spain/falls/mainly/on/the/plain/";
-            QFile file(path.append(".lzw"));
-            if (file.exists()) file.remove();
+            QFile infile(path);
+            QFile outfile(path.append(".lzw"));
+            if (outfile.exists()) outfile.remove();
 
-            edEncoder encoder(str[0]);
-            for (int i = 1; i < str.length(); i++) {
-                encoder.LZW(str[i]);
-                encoder.outCODE(file);
-            }
-            /* ------------- */
+            edImageEncoder encoder;
+            encoder.encode(imgreader, outfile);
 
-            out << endl;
+
         } else if (parser.optionNames()[0] == QString("d")) {
             QString path = parser.value("d");
             out << "Decoding started..." << endl;

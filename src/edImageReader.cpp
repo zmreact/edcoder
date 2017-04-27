@@ -12,12 +12,29 @@ edImageReader::edImageReader(QString path)
 
 void edImageReader::read_pixel(int i, int j)
 {
+    curri = i; currj = j;
     QRgb *rowData = (QRgb *) img.scanLine(i);
     QRgb pixelData = rowData[j];
     red = qRed(pixelData);
     green = qGreen(pixelData);
     blue = qBlue(pixelData);
+    currj++;
+    if (currj == img.width()) currj = 0, curri++;
+    if (curri == img.height()) curri = 0;
 }
+
+void edImageReader::read_pixel()
+{
+    QRgb *rowData = (QRgb *) img.scanLine(curri);
+    QRgb pixelData = rowData[currj];
+    red = qRed(pixelData);
+    green = qGreen(pixelData);
+    blue = qBlue(pixelData);
+    currj++;
+    if (currj == img.width()) currj = 0, curri++;
+    if (curri == img.height()) curri = 0;
+}
+
 
 void edImageReader::image_info(QTextStream &out)
 {

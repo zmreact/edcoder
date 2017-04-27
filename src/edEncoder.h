@@ -4,23 +4,41 @@
 
 #include <QTextStream>
 #include <QFile>
-#include <bitset>
 #include "edImageReader.h"
-
-using namespace std;
 
 class edEncoder
 {
-private:
+protected:
     QString STRING;
     bool NEWCODE;
-public:
-    edEncoder(QChar);
-    void LZW(QChar);
+    void LZW(const QChar &);
     void outCODE(QTextStream &);
-    void outCODE(QFile &file);
+    void outCODE(QFile &);
+    void outLASTCODE(QFile &);
     QHash<QString, int> TABLE;
     QByteArray CODE;
+public:
+    edEncoder();
+};
+
+
+class edImageEncoder : public edEncoder
+{
+private:
+
+public:
+    edImageEncoder();
+    void encode(edImageReader &imgreader, QFile &OUTPUT);
+};
+
+
+class edTextEncoder : public edEncoder
+{
+private:
+
+public:
+    edTextEncoder();
+    void encode(const QString &INPUT, QFile &OUTPUT);
 };
 
 
