@@ -12,7 +12,8 @@
 #include "stdio.h"
 #include "setup_parser.h"
 #include "welcome_msg.h"
-#include "edEncoder.h"
+#include "edImageEncoder.h"
+#include "edTextEncoder.h"
 #include "decoder.h"
 #include "edImageReader.h"
 

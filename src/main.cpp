@@ -44,10 +44,11 @@ int main(int argc, char *argv[])
             if (outfile.exists()) outfile.remove();
 
             edImageEncoder encoder;
-            encoder.encode(imgreader, outfile);
+            encoder.encode(imgreader, outfile, out);
 
             out << "Output file is:" << " " << path + ".lzw" << endl << endl;
-            out << "Compression rate:" << " " << encoder.compressionRate << endl << endl;
+            out << "Compression rate:" << " " << encoder.compressionRatio << endl << endl;
+
 
 
         } else if (parser.optionNames()[0] == QString("d")) {

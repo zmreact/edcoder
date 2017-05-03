@@ -2,6 +2,7 @@
 #define ENCODER_H
 
 
+#include <QDataStream>
 #include <QTextStream>
 #include <QFile>
 #include "edImageReader.h"
@@ -11,6 +12,9 @@ class edEncoder
 private:
 
 protected:
+
+public:
+    edEncoder();
     QString STRING;
     bool NEWCODE;
     void LZW(const QChar &);
@@ -19,30 +23,7 @@ protected:
     void outLASTCODE(QFile &);
     QHash<QString, unsigned short> TABLE;
     QByteArray CODE;
-    int compressedSize;
-public:
-    edEncoder();
-    float compressionRate;
-};
-
-
-class edImageEncoder : public edEncoder
-{
-private:
-
-public:
-    edImageEncoder();
-    void encode(edImageReader &imgreader, QFile &OUTPUT);
-};
-
-
-class edTextEncoder : public edEncoder
-{
-private:
-
-public:
-    edTextEncoder();
-    void encode(const QString &INPUT, QFile &OUTPUT);
+    int compressedSize = 0;
 };
 
 
