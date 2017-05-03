@@ -1,6 +1,6 @@
-#include "edReaderIMAGE"
+#include "edReaderImage.h"
 
-edImageReader::edImageReader(QString path)
+edReaderImage::edReaderImage(QString path)
 {
     img.load(path);
     if (img.isNull()) {
@@ -10,7 +10,7 @@ edImageReader::edImageReader(QString path)
     }
 }
 
-void edImageReader::read_pixel(int i, int j)
+void edReaderImage::read_pixel(int i, int j)
 {
     curri = i; currj = j;
     QRgb *rowData = (QRgb *) img.scanLine(i);
@@ -23,7 +23,7 @@ void edImageReader::read_pixel(int i, int j)
     if (curri == img.height()) curri = 0;
 }
 
-void edImageReader::read_pixel()
+void edReaderImage::read_pixel()
 {
     QRgb *rowData = (QRgb *) img.scanLine(curri);
     QRgb pixelData = rowData[currj];
@@ -36,7 +36,7 @@ void edImageReader::read_pixel()
 }
 
 
-void edImageReader::image_info(QTextStream &out)
+void edReaderImage::image_info(QTextStream &out)
 {
     if (read_image_ok) {
         out << "Image data" << endl;
@@ -47,7 +47,7 @@ void edImageReader::image_info(QTextStream &out)
     }
 }
 
-void edImageReader::pixel_data(QTextStream &out)
+void edReaderImage::pixel_data(QTextStream &out)
 {
     if (read_image_ok) {
         for (int i = 0; i < img.height(); i++) {

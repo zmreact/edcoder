@@ -1,11 +1,11 @@
-#include "edEncoderTEXT.h"
+#include "edEncoderText.h"
 
-edTextEncoder::edTextEncoder()
+edEncoderText::edEncoderText()
 {
 
 }
 
-void edTextEncoder::encode(const QString &INPUT, QFile &OUTPUT)
+void edEncoderText::encode(const QString &INPUT, QFile &OUTPUT)
 {
     STRING = INPUT[0];
     for (int i = 1; i < INPUT.length(); i++) {

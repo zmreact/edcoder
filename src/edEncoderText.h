@@ -4,12 +4,12 @@
 
 #include "edEncoder.h"
 
-class edTextEncoder : public edEncoder
+class edEncoderText
 {
 private:
 
 public:
-    edTextEncoder();
+    edEncoderText();
     void encode(const QString &INPUT, QFile &OUTPUT);
 };
 

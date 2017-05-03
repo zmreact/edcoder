@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
             out << "Encoding started..." << endl << endl;
             out << "Path to file is:" << " " << path << endl << endl;
 
-            edImageReader imgreader(path);
+            edReaderImage imgreader(path);
             if (imgreader.read_image_ok) {imgreader.image_info(out);
                                       //    imgreader.pixel_data(out);
                                           out << endl;}
@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
             QFile outfile(path + ".lzw");
             if (outfile.exists()) outfile.remove();
 
-            edImageEncoder encoder;
+            edEncoderImage encoder;
             encoder.encode(imgreader, outfile, out);
 
             out << "Output file is:" << " " << path + ".lzw" << endl << endl;

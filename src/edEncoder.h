@@ -5,7 +5,7 @@
 #include <QDataStream>
 #include <QTextStream>
 #include <QFile>
-#include "edReaderIMAGE"
+#include "edReaderImage.h"
 
 class edEncoder
 {

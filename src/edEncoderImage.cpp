@@ -1,11 +1,11 @@
-#include "edEncoderIMAGE.h"
+#include "edEncoderImage.h"
 
-edImageEncoder::edImageEncoder()
+edEncoderImage::edEncoderImage()
 {
 
 }
 
-void edImageEncoder::encode(edImageReader &imgreader, QFile &OUTPUT, QTextStream &out)
+void edEncoderImage::encode(edReaderImage &imgreader, QFile &OUTPUT, QTextStream &out)
 {
     edEncoder rEncoder;
     edEncoder gEncoder;
@@ -33,7 +33,7 @@ void edImageEncoder::encode(edImageReader &imgreader, QFile &OUTPUT, QTextStream
     compressionRatio = ((float) (rEncoder.compressedSize + gEncoder.compressedSize + bEncoder.compressedSize)) / ((float) imgreader.img.byteCount() * 3/4);
 }
 
-void edImageEncoder::progressbar(const int &byteindex, const int &bytecount, QTextStream &out)
+void edEncoderImage::progressbar(const int &byteindex, const int &bytecount, QTextStream &out)
 {
     static int p = 1;
     if (byteindex >= p*bytecount/10) {

@@ -12,10 +12,10 @@
 #include "stdio.h"
 #include "setup_parser.h"
 #include "welcome_msg.h"
-#include "edEncoderIMAGE.h"
-#include "edEncoderTEXT.h"
+#include "edEncoderImage.h"
+#include "edEncoderText.h"
 #include "edDecoder.h"
-#include "edReaderIMAGE"
+#include "edReaderImage.h"
 
 int main(int, char **);
 
