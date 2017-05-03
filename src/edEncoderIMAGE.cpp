@@ -1,4 +1,4 @@
-#include "edImageEncoder.h"
+#include "edEncoderIMAGE.h"
 
 edImageEncoder::edImageEncoder()
 {

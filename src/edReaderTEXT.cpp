@@ -1,4 +1,4 @@
-#include "edImageReader.h"
+#include "edReaderIMAGE"
 
 edImageReader::edImageReader(QString path)
 {

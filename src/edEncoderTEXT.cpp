@@ -1,4 +1,4 @@
-#include "edTextEncoder.h"
+#include "edEncoderTEXT.h"
 
 edTextEncoder::edTextEncoder()
 {

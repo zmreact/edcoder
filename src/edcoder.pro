@@ -9,13 +9,13 @@ CONFIG -= app_bundle
 TEMPLATE = app
 
 SOURCES += main.cpp \
-    decoder.cpp \
     setup_parser.cpp \
     welcome_msg.cpp \
-    edImageReader.cpp \
     edEncoder.cpp \
-    edTextEncoder.cpp \
-    edEncoderIMAGE.cpp
+    edEncoderIMAGE.cpp \
+    edReaderTEXT.cpp \
+    edEncoderTEXT.cpp \
+    edDecoder.cpp
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -29,11 +29,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 HEADERS += \
-    decoder.h \
     main.h \
     setup_parser.h \
     welcome_msg.h \
-    edImageReader.h \
     edEncoder.h \
-    edTextEncoder.h \
-    edEncoderIMAGE.h
+    edEncoderIMAGE.h \
+    edReaderIMAGE \
+    edEncoderTEXT.h \
+    edDecoder.h
