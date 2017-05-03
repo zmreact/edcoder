@@ -33,6 +33,5 @@ HEADERS += \
     welcome_msg.h \
     edEncoder.h \
     edDecoder.h \
-    edEncoderText.h \
     edEncoderImage.h \
     edReaderImage.h
