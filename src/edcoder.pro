@@ -14,8 +14,8 @@ SOURCES += main.cpp \
     welcome_msg.cpp \
     edImageReader.cpp \
     edEncoder.cpp \
-    edImageEncoder.cpp \
-    edTextEncoder.cpp
+    edTextEncoder.cpp \
+    edEncoderIMAGE.cpp
 
 # The following define makes your compiler emit warnings if you use
 # any feature of Qt which as been marked deprecated (the exact warnings
@@ -35,5 +35,5 @@ HEADERS += \
     welcome_msg.h \
     edImageReader.h \
     edEncoder.h \
-    edImageEncoder.h \
-    edTextEncoder.h
+    edTextEncoder.h \
+    edEncoderIMAGE.h
