@@ -47,10 +47,7 @@ int main(int argc, char *argv[])
             encoder.encode(imgreader, outfile, out);
 
             out << "Output file is:" << " " << path + ".lzw" << endl << endl;
-            out << "Compression rate:" << " " << encoder.compressionRatio << endl << endl;
-
-
-
+            out << "Compression ratio:" << " " << encoder.compressionRatio << endl << endl;
         } else if (parser.optionNames()[0] == QString("d")) {
             QString path = parser.value("d");
             out << "Decoding started..." << endl;

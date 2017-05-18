@@ -5,13 +5,13 @@ edEncoderImage::edEncoderImage()
 
 }
 
-void edEncoderImage::encode(edReaderImage &imgreader, QFile &OUTPUT, QTextStream &out)
+void edEncoderImage::encode(edReaderImage &imgreader, QFile &outfile, QTextStream &out)
 {
     edEncoder rEncoder;
     edEncoder gEncoder;
     edEncoder bEncoder;
 
-    OUTPUT.open(QIODevice::ReadWrite | QIODevice::Append);
+    outfile.open(QIODevice::ReadWrite | QIODevice::Append);
 
     imgreader.read_pixel(0,0);
     rEncoder.STRING = imgreader.red;
@@ -22,13 +22,13 @@ void edEncoderImage::encode(edReaderImage &imgreader, QFile &OUTPUT, QTextStream
         rEncoder.LZW(imgreader.red);
         gEncoder.LZW(imgreader.green);
         bEncoder.LZW(imgreader.blue);
-        rEncoder.outCODE(OUTPUT);
-        gEncoder.outCODE(OUTPUT);
-        bEncoder.outCODE(OUTPUT);
+        rEncoder.outCODE(outfile);
+        gEncoder.outCODE(outfile);
+        bEncoder.outCODE(outfile);
         progressbar(i, imgreader.img.height()*imgreader.img.width(), out);
     }
 
-    OUTPUT.close();
+    outfile.close();
 
     compressionRatio = ((float) (rEncoder.compressedSize + gEncoder.compressedSize + bEncoder.compressedSize)) / ((float) imgreader.img.byteCount() * 3/4);
 }
